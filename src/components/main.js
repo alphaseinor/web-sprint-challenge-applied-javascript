@@ -48,6 +48,12 @@ const Card = (article, newButton) => {
   newButton.addEventListener("click", (e) => {
     e.preventDefault()
     newArticle.classList.toggle("hide")
+    newButton.classList.toggle("selected")
+    if(newButton.textContent == "+"){
+      newButton.textContent = "-"
+    }else{
+      newButton.textContent = "+"
+    }
   })
 
   return newArticle
@@ -84,6 +90,7 @@ const mainAppender = (selector) => {
         const newHeader = document.createElement("h2")
 
         const newButton = document.createElement("button")
+        newButton.classList = "topic-button"
         newButton.textContent = "+"
 
         newHeader.textContent = topic

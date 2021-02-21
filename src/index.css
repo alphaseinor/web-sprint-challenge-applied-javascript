@@ -92,6 +92,21 @@ body {
   text-transform: capitalize;
 }
 
+.main-section div button{
+  background: none;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid black;
+  border-radius: 50%;
+  box-shadow: 0 0 3pt 2pt blue;
+  outline: 0;
+}
+
+.main-section div .selected{
+  box-shadow: 0 0 3pt 2pt red;
+}
+
 .main-section .card {
   display: flex;
   justify-content: space-between;
