@@ -11,7 +11,7 @@ const Card = (article) => {
   // The text inside elements will be set using their `textContent` property (NOT `innerText`).
   // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
   //
-  // <article class="card">
+  // <article class="card" key={ article.id }>
   //   <h3 class="headline">{ headline }</h3>
   //   <aside class="author">
   //     <img src={ authorPhoto }>
@@ -21,13 +21,26 @@ const Card = (article) => {
   //
 
   const newArticle = document.createElement("article")
-  const newH3 = document.createElement("h3")
+  const newHeadline = document.createElement("h3")
   const newAside = document.createElement("aside")
   const newAuthorImg = document.createElement("img")
   const newAuthorName = document.createElement("p")
 
   newArticle.className = "card"
   newArticle.setAttribute("key", article.id)
+  
+  newHeadline.className = "headline"
+  newHeadline.textContent = article.headline
+  newArticle.appendChild(newHeadline)
+
+  newAside.className = "author"
+  newArticle.appendChild(newAside)
+
+  newAuthorImg.setAttribute("src", article.authorPhoto)
+  newAside.appendChild((newAuthorImg))
+
+  newAuthorName.textContent = article.authorName
+  newAside.appendChild((newAuthorName))
 
   return newArticle
 
