@@ -13,5 +13,5 @@ console.log("index.js is connected")
 worker.start()
 
 headerAppender('.header-container')
-tabsAppender('.tabs-container')
 mainAppender('.main-container')
+tabsAppender('.tabs-container')
