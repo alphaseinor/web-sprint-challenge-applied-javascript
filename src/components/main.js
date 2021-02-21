@@ -14,7 +14,7 @@ const Card = (article) => {
   // <article class="card" key={ article.id }>
   //   <h3 class="headline">{ headline }</h3>
   //   <aside class="author">
-  //     <img src={ authorPhoto }>
+  //     <img src={ authorPhoto } alt={ authorName }>
   //     <p>By { authorName }</p>
   //   </aside>
   // </article>
@@ -37,6 +37,7 @@ const Card = (article) => {
   newArticle.appendChild(newAside)
 
   newAuthorImg.setAttribute("src", article.authorPhoto)
+  newAuthorImg.setAttribute("alt", article.authorName)
   newAside.appendChild((newAuthorImg))
 
   newAuthorName.textContent = article.authorName
@@ -67,7 +68,8 @@ const mainAppender = (selector) => {
       const mainElement = document.querySelector(selector)
       topicList.forEach(topic => {
         const newSection = document.createElement("section")
-        newSection.className = topic
+        newSection.setAttribute("key", topic)
+        newSection.className = "main-section"
         const newHeader = document.createElement("h2")
 
         newHeader.textContent = topic
