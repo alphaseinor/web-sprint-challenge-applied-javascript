@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const Card = (article) => {
-  console.log(article)
+  // console.log(article)
 
   // TASK 5
   // ---------------------
@@ -56,19 +56,23 @@ const mainAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  const mainElement = document.querySelector(selector)
+  
   axios.get("https://lambda-times-api.herokuapp.com/articles")
     .then(res => {
 
-      console.log(res.data.articles)
+      // console.log(res.data.articles)
       const articleList = res.data.articles
       //get all article topics
       const topicList = Object.keys(res.data.articles)
+
       // console.log(topicList)
       //make sections for each topic list
-      const mainElement = document.querySelector(selector)
+      
       topicList.forEach(topic => {
+
         const newSection = document.createElement("section")
-        newSection.setAttribute("key", topic)
+        newSection.setAttribute("id", topic)
         newSection.className = "main-section"
         const newHeader = document.createElement("h2")
 
@@ -80,6 +84,8 @@ const mainAppender = (selector) => {
         articleList[topic].forEach(article => {
           newSection.appendChild(Card(article))
         })
+
+        
 
         mainElement.appendChild(newSection)
       })
