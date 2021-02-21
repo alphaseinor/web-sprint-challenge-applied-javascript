@@ -1,6 +1,8 @@
 import axios from "axios"
 
-const Card = (article) => {
+const Card = (article, newButton) => {
+
+  
   // console.log(article)
 
   // TASK 5
@@ -11,7 +13,7 @@ const Card = (article) => {
   // The text inside elements will be set using their `textContent` property (NOT `innerText`).
   // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
   //
-  // <article class="card" key={ article.id }>
+  // <article class="card hide" key={ article.id }>
   //   <h3 class="headline">{ headline }</h3>
   //   <aside class="author">
   //     <img src={ authorPhoto } alt={ authorName }>
@@ -26,7 +28,7 @@ const Card = (article) => {
   const newAuthorImg = document.createElement("img")
   const newAuthorName = document.createElement("p")
 
-  newArticle.className = "card"
+  newArticle.className = "card hide"
   newArticle.setAttribute("key", article.id)
   
   newHeadline.className = "headline"
@@ -42,6 +44,11 @@ const Card = (article) => {
 
   newAuthorName.textContent = article.authorName
   newAside.appendChild((newAuthorName))
+
+  newButton.addEventListener("click", (e) => {
+    e.preventDefault()
+    newArticle.classList.toggle("hide")
+  })
 
   return newArticle
 
@@ -70,19 +77,25 @@ const mainAppender = (selector) => {
       //make sections for each topic list
       
       topicList.forEach(topic => {
-
         const newSection = document.createElement("section")
         newSection.setAttribute("id", topic)
         newSection.className = "main-section"
+        const newDiv = document.createElement("div")
         const newHeader = document.createElement("h2")
 
-        newHeader.textContent = topic
+        const newButton = document.createElement("button")
+        newButton.textContent = "+"
 
-        newSection.appendChild(newHeader)
+        newHeader.textContent = topic
+        
+        newDiv.appendChild(newHeader)
+        newDiv.appendChild(newButton)
+
+        newSection.appendChild(newDiv)
 
         // console.log(articleList[topic])
         articleList[topic].forEach(article => {
-          newSection.appendChild(Card(article))
+          newSection.appendChild(Card(article, newButton))
         })
 
         

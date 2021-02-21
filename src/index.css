@@ -60,6 +60,7 @@ img {
   width: 100%;
 }
 
+
 /* Write css for page here */
 
 /* body */
@@ -72,6 +73,7 @@ body {
 
 /* header */
 
+
 /* main */
 
 .main-container {
@@ -80,7 +82,12 @@ body {
   flex-direction: column;
 }
 
-.main-section h2 {
+.main-section div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-section div h2 {
   font-size: 2.5rem;
   text-transform: capitalize;
 }
@@ -90,6 +97,10 @@ body {
   justify-content: space-between;
   width: 100%;
   padding: 1rem;
+}
+
+.main-section .hide {
+  display: none;
 }
 
 .main-section .card:nth-child(even){
@@ -126,4 +137,10 @@ body {
 
 
 
+
 /* footer */
+
+
+
+
+
