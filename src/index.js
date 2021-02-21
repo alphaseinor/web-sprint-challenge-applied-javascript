@@ -4,12 +4,14 @@
 import 'regenerator-runtime'
 import { worker } from './mocks/browser'
 
-import { cardAppender } from './components/card'
+import { mainAppender } from './components/main'
 import { tabsAppender } from './components/tabs'
 import { headerAppender } from './components/header'
+
+console.log("index.js is connected")
 
 worker.start()
 
 headerAppender('.header-container')
 tabsAppender('.tabs-container')
-cardAppender('.cards-container')
+mainAppender('.main-container')
