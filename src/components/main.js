@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const Card = (article, newButton) => {
+const Card = (article) => {
 
   
   // console.log(article)
@@ -44,18 +44,8 @@ const Card = (article, newButton) => {
 
   newAuthorName.textContent = article.authorName
   newAside.appendChild((newAuthorName))
-
-  newButton.addEventListener("click", (e) => {
-    e.preventDefault()
-    newArticle.classList.toggle("hide")
-    newButton.classList.toggle("selected")
-    if(newButton.textContent == "+"){
-      newButton.textContent = "-"
-    }else{
-      newButton.textContent = "+"
-    }
-  })
-
+  
+  
   return newArticle
 
 }
@@ -92,7 +82,7 @@ const mainAppender = (selector) => {
         const newButton = document.createElement("button")
         newButton.classList = "topic-button"
         newButton.textContent = "+"
-
+        newButton.setAttribute("key", topic)
         newHeader.textContent = topic
         
         newDiv.appendChild(newHeader)
@@ -102,10 +92,22 @@ const mainAppender = (selector) => {
 
         // console.log(articleList[topic])
         articleList[topic].forEach(article => {
-          newSection.appendChild(Card(article, newButton))
+          newSection.appendChild(Card(article))
         })
 
-        
+        newButton.addEventListener("click", (e) => {
+          e.preventDefault()
+          e.target.classList.toggle("selected")
+          if(e.target.textContent == "+"){
+            e.target.textContent = "-"
+          }else{
+            e.target.textContent = "+"
+          }
+          console.log("click")
+          articleList = newSection.querySelector("article")
+          
+          articleList.forEach(item => item.classList.toggle("hide"))
+        },100)
 
         mainElement.appendChild(newSection)
       })
