@@ -22,7 +22,7 @@ const Card = (article) => {
   // </article>
   //
 
-  const newArticle = document.createElement("article")
+  let newArticle = document.createElement("article")
   const newHeadline = document.createElement("h3")
   const newAside = document.createElement("aside")
   const newAuthorImg = document.createElement("img")
@@ -104,9 +104,12 @@ const mainAppender = (selector) => {
             e.target.textContent = "+"
           }
           console.log("click")
-          articleList = newSection.querySelector("article")
+          const articles = newSection.querySelectorAll("article")
           
-          articleList.forEach(item => item.classList.toggle("hide"))
+          articles.forEach(item => {
+            console.log("item ", item)
+            item.classList.toggle("hide")
+          })
         },100)
 
         mainElement.appendChild(newSection)
