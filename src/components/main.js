@@ -103,11 +103,9 @@ const mainAppender = (selector) => {
           }else{
             e.target.textContent = "+"
           }
-          console.log("click")
           const articles = newSection.querySelectorAll("article")
           
           articles.forEach(item => {
-            console.log("item ", item)
             item.classList.toggle("hide")
           })
         },100)
